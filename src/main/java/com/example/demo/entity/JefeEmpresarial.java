@@ -19,12 +19,13 @@ import lombok.Setter;
 public class JefeEmpresarial {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqJefeEmpresarial")
+    @SequenceGenerator(name = "seqJefeEmpresarial", allocationSize = 1, sequenceName = "SEQ_JEFE_EMPRESARIAL")
     private Long id;
     
     @OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_persona", referencedColumnName = "id_p")
+	@JoinColumn(name = "id_persona", referencedColumnName = "id")
 	private Persona persona;
     
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "jefeEmpresarial")

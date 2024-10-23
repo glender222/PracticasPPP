@@ -7,21 +7,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@EqualsAndHashCode(callSuper=false)
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 @Entity
+@Data
 @Table(name = "practicas")
 public class PPP {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idppp")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPpp")
+    @SequenceGenerator(name = "seqPpp", allocationSize = 1, sequenceName = "SEQ_PPP")
     private Long id;
 
     @ManyToOne
@@ -37,6 +42,7 @@ public class PPP {
     @JoinColumn(name = "idtutor", nullable = true)
     @JsonIgnore
     private Tutores tutores;
+
     @Column(name = "horas")
     private Integer horas;
 
@@ -44,10 +50,20 @@ public class PPP {
     @JoinColumn(name = "id_practicante_EP", nullable = false)
     @JsonIgnore
     private Practicante_EP practicante_EP;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "id_jefe_empresarial", nullable = false)
+    @JsonIgnore
+    private JefeEmpresarial jefeEmpresarial;
+   
+
+
+
+    @Temporal(TemporalType.TIMESTAMP)  
     @Column(name = "fecha_inicio")
     private Date fechaInicio;
 
+    @Temporal(TemporalType.TIMESTAMP)  
     @Column(name = "fecha_fin")
     private Date fechaFin;
 

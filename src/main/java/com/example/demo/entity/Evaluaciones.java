@@ -2,23 +2,29 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+@EqualsAndHashCode(callSuper=false)
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 @Entity
+@Data
 @Table(name = "evaluaciones")
 public class Evaluaciones {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEvaluaciones")
+    @SequenceGenerator(name = "seqEvaluaciones", allocationSize = 1, sequenceName = "SEQ_EVALUACIONES")
+    
     private Long id;
 
     @Column(name = "nota_empresarial")

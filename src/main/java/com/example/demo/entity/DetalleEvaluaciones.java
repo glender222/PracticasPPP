@@ -19,9 +19,10 @@ import lombok.Setter;
 public class DetalleEvaluaciones {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long idEvaluacion;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqDetalleEvaluaciones")
+    @SequenceGenerator(name = "seqDetalleEvaluaciones", allocationSize = 1, sequenceName = "SEQ_DETALLE_EVALUACIONES")
+    private Long id;
 
     @Column(name = "rubros")
     private int rubros;

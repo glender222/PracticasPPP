@@ -15,22 +15,31 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+@EqualsAndHashCode(callSuper=false)
+
 @AllArgsConstructor
+
 @NoArgsConstructor
 @Setter
 @Getter
 @Entity
+@Data
 @Table(name = "tutores")
 public class Tutores {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
+	 @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqTutores")
+    @SequenceGenerator(name = "seqTutores", allocationSize = 1, sequenceName = "SEQ_TUTORES")
+    private Long id;
 	
 	@OneToOne
 	@JoinColumn(name = "idpersona", referencedColumnName = "id", nullable = false)

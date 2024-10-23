@@ -19,9 +19,11 @@ import lombok.Setter;
 public class Rubros {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_rubro")
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqRubros")
+    @SequenceGenerator(name = "seqRubros", allocationSize = 1, sequenceName = "SEQ_RUBROS")
     private Long id;
+
 
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "rubros")
 	@JsonIgnore

@@ -6,22 +6,33 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+
+@EqualsAndHashCode(callSuper=false)
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 @Entity
+@Data
 @Table(name = "evidencia")
 public class Evidencia {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_evidencia")
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEvidencia")
+    @SequenceGenerator(name = "seqEvidencia", allocationSize = 1, sequenceName = "SEQ_EVIDENCIA")
     private Long id;
+
+
+
+
 
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "evidencia")
 	@JsonIgnore

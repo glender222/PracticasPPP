@@ -19,8 +19,9 @@ import lombok.Setter;
 public class Programacion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idprogramacion")
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqProgramacion")
+    @SequenceGenerator(name = "seqProgramacion", allocationSize = 1, sequenceName = "SEQ_PROGRAMACION")
     private Long id;
 
     @Column(name = "semana")

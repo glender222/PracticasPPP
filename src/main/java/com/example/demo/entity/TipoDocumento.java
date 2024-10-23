@@ -6,21 +6,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@EqualsAndHashCode(callSuper=false)
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 @Entity
+@Data
 @Table(name = "tipo_documento")
 public class TipoDocumento {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_tipo_documento")
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqTipoDocumento")
+    @SequenceGenerator(name = "seqTipoDocumento", allocationSize = 1, sequenceName = "SEQ_TIPODOCUMENTO")
     private Long id;
 
     @Column(name = "nombre_doc", length = 320)

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,12 +16,14 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
+@Data
 @Table(name = "practicantes")
 public class Practicante {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPracticante")
+    @SequenceGenerator(name = "seqPracticante", allocationSize = 1, sequenceName = "SEQ_PRACTICANTE")
     private Long id;
 
     @Column(name = "codigo", length = 100)
@@ -30,7 +33,7 @@ public class Practicante {
     private String añoEstudio;
 	
     @OneToOne
-	@JoinColumn(name = "idpersona", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "id_persona", referencedColumnName = "id", nullable = false)
     @JsonIgnore
 	private Persona persona;
 	 @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "practicante")

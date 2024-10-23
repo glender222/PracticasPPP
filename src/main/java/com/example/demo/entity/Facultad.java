@@ -20,8 +20,10 @@ import lombok.Setter;
 public class Facultad {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_facultad")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqFacultad")
+    @SequenceGenerator(name = "seqFacultad", allocationSize = 1, sequenceName = "SEQ_FACULTAD")
+    
     private Long id;
 
     @Column(name = "facultad", length = 250)

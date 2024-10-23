@@ -19,8 +19,10 @@ import lombok.Setter;
 public class Linea {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqLinea")
+    @SequenceGenerator(name = "seqLinea", allocationSize = 1, sequenceName = "SEQ_LINEA")
+    
     private Long id;
 
     @Column(name = "nombre", length = 250)
