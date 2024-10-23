@@ -7,25 +7,25 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.example.demo.dao.EvidenciaDao;
-import com.example.demo.entity.Evidencia;
-import com.example.demo.repository.EvidenciaRepository;
+import com.example.demo.dao.TipoDao;
+import com.example.demo.entity.Tipo;
+import com.example.demo.repository.TipoRepository;
 
 
 @Component
-public class EvidenciaDaoImpl implements EvidenciaDao {
+public class TipoDaoImpl implements TipoDao {
 
 	@Autowired
-	private EvidenciaRepository evidenciaRepository;
+	private TipoRepository evidenciaRepository;
 	
 	@Override
-	public Evidencia create(Evidencia c) {
+	public Tipo create(Tipo c) {
 		// TODO Auto-generated method stub
 		return evidenciaRepository.save(c);
 	}
 
 	@Override
-	public Evidencia update(Evidencia c) {
+	public Tipo update(Tipo c) {
 		// TODO Auto-generated method stub
 		return evidenciaRepository.save(c);
 	}
@@ -37,13 +37,13 @@ public class EvidenciaDaoImpl implements EvidenciaDao {
 	}
 
 	@Override
-	public Evidencia read(Long id) {
+	public Tipo read(Long id) {
 		// TODO Auto-generated method stub
 		return evidenciaRepository.findById(id).get();
 	}
 
 	@Override
-	public List<Evidencia> readAll() {
+	public List<Tipo> readAll() {
 		// TODO Auto-generated method stub
 		return evidenciaRepository.findAll();
 	}

@@ -39,9 +39,7 @@ public class Documentacion {
     @Column(name = "url", length = 2500)
     private String url;
 
-    @Column(name = "estado", length = 1)
-    private String estado;
-
+    
     @Column(name = "fecha_generada")
     private Date fechaGenerada;
 }

@@ -16,22 +16,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.Evidencia;
-import com.example.demo.service.EvidenciaService;
+import com.example.demo.entity.Tipo;
+import com.example.demo.service.TipoService;
 
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/evidencias")
 @CrossOrigin(origins = "http://localhost:4200/")
-public class EvidenciaController {
+public class TipoController {
 	@Autowired
-	private EvidenciaService evidenciaService;
+	private TipoService evidenciaService;
 	
 	@GetMapping
-	public ResponseEntity<List<Evidencia>> readAll(){
+	public ResponseEntity<List<Tipo>> readAll(){
 		try {
-			List<Evidencia> Evidencias = evidenciaService.readAll();
+			List<Tipo> Evidencias = evidenciaService.readAll();
 			if(Evidencias.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
@@ -43,9 +43,9 @@ public class EvidenciaController {
 		
 	}
 	@PostMapping
-	public ResponseEntity<Evidencia> crear(@Valid @RequestBody Evidencia cat){
+	public ResponseEntity<Tipo> crear(@Valid @RequestBody Tipo cat){
 		try {
-			Evidencia c = evidenciaService.create(cat);
+			Tipo c = evidenciaService.create(cat);
 			return new ResponseEntity<>(c, HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -54,9 +54,9 @@ public class EvidenciaController {
 		
 	}
 	@GetMapping("/{id}")
-	public ResponseEntity<Evidencia> getEvidenciaId(@PathVariable("id") Long id){
+	public ResponseEntity<Tipo> getEvidenciaId(@PathVariable("id") Long id){
 		try {
-			Evidencia c = evidenciaService.read(id);
+			Tipo c = evidenciaService.read(id);
 			return new ResponseEntity<>(c, HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -65,7 +65,7 @@ public class EvidenciaController {
 		
 	}
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Evidencia> delEvidencia(@PathVariable("id") Long id){
+	public ResponseEntity<Tipo> delEvidencia(@PathVariable("id") Long id){
 		try {
 			evidenciaService.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -76,9 +76,9 @@ public class EvidenciaController {
 		
 	}
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateEvidencia(@PathVariable("id") Long id, @Valid @RequestBody Evidencia cat){
+	public ResponseEntity<?> updateEvidencia(@PathVariable("id") Long id, @Valid @RequestBody Tipo cat){
 
-			Evidencia c = evidenciaService.read(id);
+			Tipo c = evidenciaService.read(id);
 			if(c.getId()>0) {
 				return new ResponseEntity<>(evidenciaService.update(cat), HttpStatus.OK);
 			}else {

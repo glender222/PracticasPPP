@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 
-import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,17 +24,20 @@ public class Rubros {
     private Long id;
 
 
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "rubros")
-	@JsonIgnore
-	private Set<Evidencia> evidencia;
+    @Column(name = "nota")
+    private Integer nota;
+    
 
-    @Column(name = "nombre", length = 250)
-    private String nombre;
-
-    @Column(name = "porcentaje")
-    private Integer porcentaje;
     @ManyToOne
-    @JoinColumn(name = "idppp", nullable = false)
+    @JoinColumn(name = "programacion_id", nullable = false)
     @JsonIgnore
-    private PPP practicas;
+    private Programacion programacion;
+
+
+    @ManyToOne
+    @JoinColumn(name = "tipo_id", nullable = false)
+    @JsonIgnore
+    private Tipo tipo;
+
+
 }

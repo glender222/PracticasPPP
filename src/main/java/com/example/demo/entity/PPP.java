@@ -29,10 +29,21 @@ public class PPP {
     @SequenceGenerator(name = "seqPpp", allocationSize = 1, sequenceName = "SEQ_PPP")
     private Long id;
 
+    @Column(name = "horas")
+    private Integer horas;
+
+    @Column(name = "modalidad", length = 215)
+    private String modalidad;
+
+    @Column(name = "estado", length = 1)
+    private String estado;
+
     @ManyToOne
     @JoinColumn(name = "id_empresa", nullable = false)
     @JsonIgnore
     private Empresa empresa;
+
+    
     @ManyToOne
     @JoinColumn(name = "id_areap", nullable = true)
     @JsonIgnore
@@ -43,8 +54,7 @@ public class PPP {
     @JsonIgnore
     private Tutores tutores;
 
-    @Column(name = "horas")
-    private Integer horas;
+    
 
     @ManyToOne
     @JoinColumn(name = "id_practicante_EP", nullable = false)
@@ -56,7 +66,7 @@ public class PPP {
     @JsonIgnore
     private JefeEmpresarial jefeEmpresarial;
    
-
+   
 
 
     @Temporal(TemporalType.TIMESTAMP)  
@@ -67,24 +77,35 @@ public class PPP {
     @Column(name = "fecha_fin")
     private Date fechaFin;
 
-    @Column(name = "modalidad", length = 215)
-    private String modalidad;
+  
     
     @ManyToOne
     @JoinColumn(name = "idlinea", nullable = true)
     @JsonIgnore
     private Linea linea;
 
-    @Column(name = "estado", length = 1)
-    private String estado;
+    
     @ManyToOne
     @JoinColumn(name = "idpersona_supervisor", referencedColumnName = "id", nullable = true)
     @JsonIgnore
     private Persona persona;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "practicas")
-	@JsonIgnore
-	private Set<Rubros> rubros;
+     // ppp uniendose con rubros tiene que ser cambiado 
+
+   
+
+
+
+// Nuevo enlaze para enlazar ppp con programacion 
+
+@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "ppp")
+@JsonIgnore
+private Set<Programacion> programacions;
+
+
+
+
+
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "practicas")
 	@JsonIgnore
 	private Set<Documentacion> documentacion;

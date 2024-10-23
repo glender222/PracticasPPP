@@ -6,25 +6,25 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dao.EvidenciaDao;
-import com.example.demo.entity.Evidencia;
-import com.example.demo.service.EvidenciaService;
+import com.example.demo.dao.TipoDao;
+import com.example.demo.entity.Tipo;
+import com.example.demo.service.TipoService;
 
 
 @Service
-public class EvidenciaServiceImpl implements EvidenciaService {
+public class TipoServiceImpl implements TipoService {
 
 	@Autowired
-	private EvidenciaDao dao;
+	private TipoDao dao;
 	
 	@Override
-	public Evidencia create(Evidencia c) {
+	public Tipo create(Tipo c) {
 		// TODO Auto-generated method stub
 		return dao.create(c);
 	}
 
 	@Override
-	public Evidencia update(Evidencia c) {
+	public Tipo update(Tipo c) {
 		// TODO Auto-generated method stub
 		return dao.update(c);
 	}
@@ -36,13 +36,13 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 	}
 
 	@Override
-	public Evidencia read(Long id) {
+	public Tipo read(Long id) {
 		// TODO Auto-generated method stub
 		return dao.read(id);
 	}
 
 	@Override
-	public List<Evidencia> readAll() {
+	public List<Tipo> readAll() {
 		// TODO Auto-generated method stub
 		return dao.readAll();
 	}
