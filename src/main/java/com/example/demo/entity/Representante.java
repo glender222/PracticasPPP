@@ -28,14 +28,18 @@ public class Representante {
 
     @Column(name = "cargo", length = 215)
     private String cargo;
+    
+    @Column(name = "nombre", length = 215)
+    private String nombre;
+    
+    @Column(name = "apellido", length = 215)
+    private String apellido;
 
-    @Column(name = "estado", length = 1)
-    private String estado;
+    @Column(name = "telefono", length = 215)
+    private String telefono;
 
-    @OneToOne
-	@JoinColumn(name = "id_persona", referencedColumnName = "id", nullable = false)
-	@JsonIgnore
-	private Persona persona;
+    @Column(name = "correo_elec", length = 1)
+    private String correo_elec;
 
     @ManyToOne
     @JoinColumn(name ="id_empresa", referencedColumnName ="id", nullable = false)

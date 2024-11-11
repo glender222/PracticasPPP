@@ -28,12 +28,12 @@ public class Acceso {
     @SequenceGenerator(name = "seqAcceso", allocationSize = 1, sequenceName = "SEQ_ACCESO")
     private Long id;
 
-    @Column(name="titulo")
-	private String titulo;
+    @Column(name="tipo_vista")
+	private String tipo_vista;
 	@Column(name="icono")
 	private String icono;
-	@Column(name="link")
-	private String link;
+	@Column(name="url")
+	private String url;
 	@Column(name="estado",length = 1)
 	private char estado;
     

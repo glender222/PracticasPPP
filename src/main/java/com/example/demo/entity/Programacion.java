@@ -34,30 +34,12 @@ public class Programacion {
     @Column(name = "link", length = 250)
     private String link;
 
-
-    // se tiene que borrar por que tiene un enlaze con evidencia
-    // cosa que esta incorrecto 
-  
-
-    // tenemos que crear programacion con rubro uno a muchos
-
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "programacion")
 	@JsonIgnore
 	private Set<Rubros> rubros;
-
-
-
-
-
-
-    // se tiene que crear ppp a programacion se recepciona
 
     @ManyToOne
     @JoinColumn(name = "idppp", nullable = false)
     @JsonIgnore
     private PPP ppp;
-
-
-
-
 }

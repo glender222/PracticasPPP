@@ -40,21 +40,9 @@ public class Tipo {
     
     @Column(name = "estado", length = 1)
     private String estado;
-
-
-// tiene que ser borrado esta conexion
-   
-
-// tiene que ser borrado esta conexion 
-   
-// enlaza con rubros
- @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "tipo")
+    
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "tipo")
 	@JsonIgnore
 	private Set<Rubros> rubross;
-
-
-
-    
-
     
 }

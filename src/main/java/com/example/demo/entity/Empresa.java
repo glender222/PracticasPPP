@@ -40,8 +40,8 @@ public class Empresa {
     @NotNull @Column(name = "ruc", length = 11)
     private String ruc;
 
-    @NotNull @Column(name = "estado", length = 1)
-    private String estado;
+    @NotNull @Column(name = "descripcion", length = 5000)
+    private String descripcion;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
     @JsonIgnore

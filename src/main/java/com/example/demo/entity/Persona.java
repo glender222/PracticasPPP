@@ -47,12 +47,6 @@ public class Persona {
     @Column(name = "nacionalidad", length = 250)
     private String nacionalidad;
 
-   
-    @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private Representante representante;
-
-
     @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private Tutores tutor;

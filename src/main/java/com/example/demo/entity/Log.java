@@ -1,9 +1,6 @@
 package com.example.demo.entity;
 
-import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,8 +12,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "linea")
-public class Linea {
+@Table(name = "logs")
+public class Log {
 
     @Id
     @Column(name = "id")
@@ -31,15 +28,9 @@ public class Linea {
     @Column(name = "estado", length = 1)
     private String estado;
     
-    @Column(name = "Nota_max", length = 1)
-    private String nota_max;
-    
-    @OneToOne(mappedBy = "linea")
-    @JsonIgnore
-    private Tutores tutores;
-    
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "linea")
-   	@JsonIgnore
-   	private Set<PPP> practicas;
+    @ManyToOne
+	@JoinColumn(name="id_usuario", nullable = false)
+	@JsonIgnore
+	private Usuario usuario;
 }
 
